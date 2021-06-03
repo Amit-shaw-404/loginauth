@@ -64,7 +64,7 @@ function SignIn() {
   }
   const handleSubmit=(event)=>{
     event.preventDefault();
-    axios.post("http://localhost:5000/signin",details)
+    axios.post("https://backend1authentication.herokuapp.com/signin",details)
     .then(res=>{
         localStorage.setItem(`token${res.data.user.username}`,res.data.token)
         setAccess(res.data.user);
@@ -85,7 +85,7 @@ function SignIn() {
     console.log(response);
     axios({
       method:'POST',
-      url:"http://localhost:5000/googlelogin",
+      url:"https://backend1authentication.herokuapp.com/googlelogin",
       data:{tokenId:response.tokenId}
     })
     .then(res=>{
@@ -104,7 +104,7 @@ function SignIn() {
     console.log(response);
     axios({
       method:'POST',
-      url:"http://localhost:5000/facebooklogin",
+      url:"https://backend1authentication.herokuapp.com/facebooklogin",
       data:{accessToken:response.accessToken, userId:response.userID}
     })
     .then(res=>{

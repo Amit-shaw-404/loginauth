@@ -70,12 +70,12 @@ function Profile(){
 
     useEffect(()=>{
         const request=async()=>{
-            axios.get("http://localhost:5000/profile", {
+            axios.get("https://backend1authentication.herokuapp.com/profile", {
                 headers:{
                     "x-access-token":localStorage.getItem(`token${username}`),
                 }
             }).then(res=>{
-                axios.post("http://localhost:5000/users", {username:username})
+                axios.post("https://backend1authentication.herokuapp.com/", {username:username})
                 .then(response=>{
                     setUser(response.data);
                     setContent(response.data.bio);
@@ -108,7 +108,7 @@ function Profile(){
     const handleBio=()=>{
         setEdit(false);
         const data={firstname:user.firstname, lastname:user.lastname, email:user.email, password:user.password, username:user.username, img:user.img, wallimg:user.wallimg, bio:content}
-        axios.post("http://localhost:5000/update", {data:data})
+        axios.post("https://backend1authentication.herokuapp.com/update", {data:data})
         .then(response=>{
             setUser(response.data);
             console.log(response);
@@ -127,7 +127,7 @@ function Profile(){
         .then(res=>{
             console.log(res);
             const data={firstname:user.firstname, lastname:user.lastname, email:user.email, password:user.password, username:user.username, img:res.data.url, wallimg:user.wallimg, bio:user.bio}
-            axios.post("http://localhost:5000/update", {data:data})
+            axios.post("https://backend1authentication.herokuapp.com/update", {data:data})
             .then(response=>{
                 setUser(response.data);
             })
@@ -142,7 +142,7 @@ function Profile(){
         .then(res=>{
             console.log(res);
             const data={firstname:user.firstname, lastname:user.lastname, email:user.email, password:user.password, username:user.username, img:user.img, wallimg:res.data.url}
-            axios.post("http://localhost:5000/update", {data:data})
+            axios.post("https://backend1authentication.herokuapp.com/update", {data:data})
             .then(response=>{
                 setUser(response.data);
                

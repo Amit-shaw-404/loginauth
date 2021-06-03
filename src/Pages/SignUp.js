@@ -75,7 +75,7 @@ export default function SignUp() {
   const [confirm, setConfirm]=useState(false);
 
   const signUpRequest=()=>{
-    axios.post("http://localhost:5000/signup",details)
+    axios.post("https://backend1authentication.herokuapp.com/signup",details)
     .then(res=>{
         setSuccess("Email has been sent to the mail id, please verify it");
     })
