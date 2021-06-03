@@ -75,7 +75,7 @@ function Profile(){
                     "x-access-token":localStorage.getItem(`token${username}`),
                 }
             }).then(res=>{
-                axios.post("https://backend1authentication.herokuapp.com/", {username:username})
+                axios.post("https://backend1authentication.herokuapp.com/users", {username:username})
                 .then(response=>{
                     setUser(response.data);
                     setContent(response.data.bio);
