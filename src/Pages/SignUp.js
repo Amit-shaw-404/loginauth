@@ -80,7 +80,7 @@ export default function SignUp() {
         setSuccess("Email has been sent to the mail id, please verify it");
     })
     .catch(err=>{
-        if(err.response.data.message=="Email already taken"){
+        if(err.response.data.message=="Email already taken" || err.response.data.message=="Error in sending message"){
           setEmailErr(err.response.data.message)
         }else{
           setUsernameErr("Username already taken");
